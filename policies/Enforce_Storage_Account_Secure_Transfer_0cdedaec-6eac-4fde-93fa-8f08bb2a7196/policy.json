@@ -1,0 +1,38 @@
+{
+ "properties": {
+  "displayName": "Enforce Storage Account Secure Transfer",
+  "policyType": "Custom",
+  "mode": "All",
+  "description": "Ensure HTTPs traffic only for strorage account",
+  "metadata": {
+   "category": "Storage Account",
+   "createdBy": "127eb084-8b84-4db8-9290-a593f73b6ca5",
+   "createdOn": "2019-05-30T13:03:01.8278429Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {},
+  "policyRule": {
+   "if": {
+    "allOf": [
+     {
+      "field": "type",
+      "equals": "Microsoft.Storage/storageAccounts"
+     },
+     {
+      "not": {
+       "field": "Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly",
+       "equals": "true"
+      }
+     }
+    ]
+   },
+   "then": {
+    "effect": "deny"
+   }
+  }
+ },
+ "id": "/subscriptions/619364dd-5f86-4e9e-af69-32f4eab0ca80/providers/Microsoft.Authorization/policyDefinitions/0cdedaec-6eac-4fde-93fa-8f08bb2a7196",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "0cdedaec-6eac-4fde-93fa-8f08bb2a7196"
+}
